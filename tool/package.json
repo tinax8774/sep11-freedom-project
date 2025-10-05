@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "aframe": "^1.7.1",
+    "animate": "^1.0.0",
+    "css": "^3.0.0",
+    "howler": "^2.2.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
