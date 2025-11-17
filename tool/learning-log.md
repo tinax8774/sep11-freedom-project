@@ -41,7 +41,32 @@ let a = (4
 
 Some challenges were still trying to figure out how to use this tool and understanding its function.
 
-Next time I'm gonna try and see to what extent can it fix mistakes to. 
+Next time I'm gonna try and see to what extent can it fix mistakes to.
+
+
+
+### 11/10/2025:
+* Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
+
+* Typescript can easily know the types of code and can often autocorrect the code.
+```
+const user = {
+  name: "Hayes",
+  id: 0,
+};
+```
+Can also use the following code:
+```
+interface User {
+  name: string;
+  id: number;
+}
+```
+* used to show that name is a string and the id is a number.
+
+Challenges were trying to figure out the code as this is not what we learned in class
+
+Next time I'm gonna continue exploring this website and its function. 
 
 
 
