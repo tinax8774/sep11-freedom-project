@@ -66,10 +66,34 @@ interface User {
 
 Challenges were trying to figure out the code as this is not what we learned in class
 
-Next time I'm gonna continue exploring this website and its function. 
+Next time I'm gonna continue exploring this website and its function.
 
+### 11/23/2025
+* Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
 
+```
+interface User {
+  name: string;
+  id: number;
+}
 
+class UserAccount {
+  name: string;
+  id: number;
+
+  constructor(name: string, id: number) {
+    this.name = name;
+    this.id = id;
+  }
+}
+
+const user: User = new UserAccount(" John", 3);
+```
+* This is similar to the classes used in javascript but for this it is using interface.
+
+Challenges were trying to find time to do this learning log and also the code is getting confusing to some extent.
+
+Next time gonna try and test more things out and find time for tinkering. 
 
 <!--
 * Links you used today (websites, videos, etc)
