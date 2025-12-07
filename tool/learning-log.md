@@ -95,6 +95,22 @@ Challenges were trying to find time to do this learning log and also the code is
 
 Next time gonna try and test more things out and find time for tinkering.
 
+### 12/6/2025
+* Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
+
+``` js
+type WindowStates = "open" | "closed" | "minimized";
+type LockStates = "locked" | "unlocked";
+type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
+```
+* Is used to set strings and number literals
+
+``` js
+function getLength(obj: string | string[]) {
+  return obj.length;
+```
+* Is used to 
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
