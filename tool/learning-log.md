@@ -109,7 +109,11 @@ type PositiveOddNumbersUnderTen = 1 | 3 | 5 | 7 | 9;
 function getLength(obj: string | string[]) {
   return obj.length;
 ```
-* Is used to 
+* Is used to take a string or a array.
+
+Challenges were trying to understand how the code is written as this is kinda different
+
+Next time I'm just gonna continue to tinker
 
 <!--
 * Links you used today (websites, videos, etc)
