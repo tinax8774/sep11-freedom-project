@@ -49,14 +49,14 @@ Next time I'm gonna try and see to what extent can it fix mistakes to.
 * Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
 
 * Typescript can easily know the types of code and can often autocorrect the code.
-```
+``` js
 const user = {
   name: "Hayes",
   id: 0,
 };
 ```
 Can also use the following code:
-```
+``` js
 interface User {
   name: string;
   id: number;
@@ -71,7 +71,7 @@ Next time I'm gonna continue exploring this website and its function.
 ### 11/23/2025
 * Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
 
-```
+``` js
 interface User {
   name: string;
   id: number;
@@ -93,7 +93,7 @@ const user: User = new UserAccount(" John", 3);
 
 Challenges were trying to find time to do this learning log and also the code is getting confusing to some extent.
 
-Next time gonna try and test more things out and find time for tinkering. 
+Next time gonna try and test more things out and find time for tinkering.
 
 <!--
 * Links you used today (websites, videos, etc)
