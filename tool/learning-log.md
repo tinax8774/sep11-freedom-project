@@ -115,6 +115,33 @@ Challenges were trying to understand how the code is written as this is kinda di
 
 Next time I'm just gonna continue to tinker
 
+### 12/13/2025
+* Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
+
+``` js
+function wrapInArray(obj: string | string[]) {
+  if (typeof obj === "string") {
+    return [obj];
+
+(parameter) obj: string
+  }
+  return obj;
+}
+```
+
+* Things can be returned either from a string or an array.
+
+``` js
+type StringArray = Array<string>;
+type NumberArray = Array<number>;
+type ObjectWithNameArray = Array<{ name: string }>;
+```
+* Similar to variables arrays can also have different values unless it is set to a certain value.
+
+Challenges was finding time to do this learning log and also processing the code in general
+
+Gonna continue tinkering in the upcoming weeks
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
