@@ -112,7 +112,7 @@ type NumberArray = Array<number>;
 type ObjectWithNameArray = Array<{ name: string }>;
 ```
 ### Goal for Winter Break:
-For winter break my goal is to try and tinker with my tool for at least 1 hour balancing between work for other classes and spending time with family.
+For winter break my goal is to continue to watch this youtube [video](https://www.youtube.com/watch?v=d56mG7DezGs)and continue to test out my tool and find more ways to understand how it works by exploring more of the website and maybe find another video. 
 
 
 
@@ -122,7 +122,7 @@ The sources I used was the [website](https://www.typescriptlang.org/docs/handboo
 
 
 ### EDP(Engineering Design Process)
-We are currently on the first step as we are slowly learning our tool and haven't started to do much yet.
+We are currently on the fifth step as we are learning our tool and will use this tool later on to make our final project.
 
 
 ### Skills
