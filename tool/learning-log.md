@@ -142,6 +142,32 @@ Challenges was finding time to do this learning log and also processing the code
 
 Gonna continue tinkering in the upcoming weeks
 
+### 1/15/2026
+* Continued watching [this video](https://www.youtube.com/watch?v=d56mG7DezGs)
+
+``` js
+function wrapInArray(obj: string | string[]) {
+  if (typeof obj === "string") {
+    return [obj];
+
+(parameter) obj: string
+  }
+  return obj;
+}
+```
+* It allows for the funciton to return different values depending on the string or the array
+
+``` js
+const obj = { width: 10, height: 15 };
+// Why is this NaN? Spelling is hard!
+const area = obj.width * obj.heigth;
+```
+* It can also access different properties
+
+Challenges was finding time in a busy week to learn my tool
+
+Next time gonna try to spend more time learning my tool
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
