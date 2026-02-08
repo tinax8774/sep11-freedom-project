@@ -80,7 +80,7 @@ logPoint(point);
 The sources I used was the [website](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html) and also a youtube [video](https://www.youtube.com/watch?v=d56mG7DezGs)
 
 ### EDP(Engineering Design Process)
-We are currently on the fifth step as we are learning our tool and will use this tool later on to make our final project.
+We are currently on the fifth step as we are learning our tool and will use this tool later on to make our final project. Our next step is to plan out how we are going to make our project and also continue to learn our tool 
 
 ### Goal for upcoming weeks:
 My goal for continue to learn my tool is to continue to test out more code on my tool website and find a different video on Youtube that can help me better understand my tool.
@@ -88,7 +88,7 @@ My goal for continue to learn my tool is to continue to test out more code on my
 ### Skills
 One skill is time management becasue it takes a lot of time to learn a tool and trying to balance it with all my other classes was definitely a challenge but I found time within my week to sit down and learn my tool for a bit of time everyday.
 
-Another skill is attention to details becasue I often make mistakes while typing code or just anything in general but recently I been able to type code without making as much mistakes as I use to . 
+Another skill is attention to details becasue I often make mistakes while typing code or just anything in general but recently I been able to type code without making as much mistakes as I use to .
 
 
 
