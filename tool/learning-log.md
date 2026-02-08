@@ -166,7 +166,7 @@ const area = obj.width * obj.heigth;
 
 Challenges was finding time in a busy week to learn my tool
 
-Next time gonna try to spend more time learning my tool
+Next time gonna try to spend more time learning my toolc
 
 <!--
 * Links you used today (websites, videos, etc)
