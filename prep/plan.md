@@ -6,7 +6,7 @@
 ---
 
 ## Timeline
-2/14-2/22(Winter Break):
+2/14-2/22(Mid-winter Break):
 * Do research about movies/books based off of user input
 2/23-3/1:
 * Finish research and start the basic layout of how the website would work mostly HTML
@@ -27,7 +27,7 @@ After 4/23:
 #### Beyond MVP
 
 - [ ] Add CSS and maybe bootstrap to make the app look more neat and organized.
-  - [ ] Used some colors and add some bootstrap elements in order to make the info more organized and add pictures of what the books or movies look like. 
+  - [ ] Used some colors and add some bootstrap elements in order to make the info more organized and add pictures of what the books or movies look like.
 
 
 <!-- EXAMPLE
