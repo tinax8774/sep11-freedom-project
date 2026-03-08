@@ -166,7 +166,46 @@ const area = obj.width * obj.heigth;
 
 Challenges was finding time in a busy week to learn my tool
 
-Next time gonna try to spend more time learning my toolc
+Next time gonna try to spend more time learning my tool
+
+### 3/7/2026
+This week only coding happened:
+
+``` js
+interface Point {
+  x: number;
+  y: number;
+}
+ 
+function logPoint(p: Point) {
+  console.log(`${p.x}, ${p.y}`);
+}
+ 
+// logs "12, 26"
+const point = { x: 12, y: 26 };
+logPoint(point);
+``` 
+* This is used when both of the shapes are the same shape so they belong in the same type
+
+``` js
+class VirtualPoint {
+  x: number;
+  y: number;
+ 
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+ 
+const newVPoint = new VirtualPoint(13, 56);
+logPoint(newVPoint); // logs "13, 56"
+``` 
+* Shows that there is no difference between how clases and objects form to make shapes
+
+Challenges was finding time to tinker
+
+Next step is to use the tool to make my MVP for my project
 
 <!--
 * Links you used today (websites, videos, etc)
