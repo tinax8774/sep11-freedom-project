@@ -207,6 +207,70 @@ Challenges was finding time to tinker
 
 Next step is to use the tool to make my MVP for my project
 
+### 3/21/2026
+This week was mainly only coding that happened
+
+``` js
+const point3 = { x: 12, y: 26, z: 89 };
+logPoint(point3); // logs "12, 26"
+ 
+const rect = { x: 33, y: 3, width: 30, height: 80 };
+logPoint(rect); // logs "33, 3"
+ 
+const color = { hex: "#187ABF" };
+logPoint(color);
+Argument of type '{ hex: string; }' is not assignable to parameter of type 'Point'.
+  Type '{ hex: string; }' is missing the following properties from type 'Point': x, y
+```
+* `point` and `Point` are different but `point` is being compared to `Point`
+
+``` js
+class VirtualPoint {
+  x: number;
+  y: number;
+ 
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+ 
+const newVPoint = new VirtualPoint(13, 56);
+logPoint(newVPoint); // logs "13, 56"
+```
+* There is not a difference between classes and objects conform when it comes to shapes
+
+``` js
+class Student {
+  fullName: string;
+  constructor(
+    public firstName: string,
+    public middleInitial: string,
+    public lastName: string
+  ) {
+    this.fullName = firstName + " " + middleInitial + " " + lastName;
+  }
+}
+ 
+interface Person {
+  firstName: string;
+  lastName: string;
+}
+ 
+function greeter(person: Person) {
+  return "Hello, " + person.firstName + " " + person.lastName;
+}
+ 
+let user = new Student("Jane", "M.", "User");
+ 
+document.body.textContent = greeter(user);
+```
+* `public` has similar functions to `var` which is used to create properties with a certain name. 
+
+Challenges were balancing homework assignments for other classes and tinkering 
+
+Next step is to continue to code my freedom project
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
