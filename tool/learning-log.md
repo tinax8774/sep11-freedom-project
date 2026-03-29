@@ -271,6 +271,51 @@ Challenges were balancing homework assignments for other classes and tinkering
 
 Next step is to continue to code my freedom project
 
+### 3/23/2026
+* Starting to build the foundation of my project and figuring out what concepts I need in order to make my project. 
+* Main MVP is just going to include movies and book suggestions for personality and beyond MVP is gonna go into how people feels that day and give suggestions for it. 
+
+``` js
+function greeter(person) {
+  return "Hello, " + person;
+}
+ 
+let user = "Jane User";
+ 
+document.body.textContent = greeter(user);
+```
+* Basically returns Hello and the value of person is already set to "Jane User" so it will print out "Hello Jane User"
+
+``` js
+class Student {
+  fullName: string;
+  constructor(
+    public firstName: string,
+    public middleInitial: string,
+    public lastName: string
+  ) {
+    this.fullName = firstName + " " + middleInitial + " " + lastName;
+  }
+}
+ 
+interface Person {
+  firstName: string;
+  lastName: string;
+}
+ 
+function greeter(person: Person) {
+  return "Hello, " + person.firstName + " " + person.lastName;
+}
+ 
+let user = new Student("Jane", "M.", "User");
+ 
+document.body.textContent = greeter(user);
+``` 
+* `public` is used to allow for the user to automatically create properties with that name
+
+Challenges was trying to complete this and finding time to tinker
+
+Will be continuing to code towards my MVP
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
