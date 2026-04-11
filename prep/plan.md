@@ -21,12 +21,12 @@ After 4/13:
   - [x]  Use google to find movies and books that people tend to enjoy reading based off of how their feeling or what they enjoy reading. (deadline: 3/1)
 - [ ] Using HTML to make the base of the website and make a foundation for the javascript (deadline: 3/16)
 - [ ] Use javascript to finish the app through the use of adding the choices of movies and book suggestion and fix problems that might occur with the code.(deadline 4/22)
-
+- [ ] Add in emotions based books and movies choices
 #### Beyond MVP
 
 - [ ] Add CSS and maybe bootstrap to make the app look more neat and organized.
   - [ ] Used some colors and add some bootstrap elements in order to make the info more organized and add pictures of what the books or movies look like.
-  - [ ] Add in emotions based books and movies choices
+  - [ ] Add another option
 
 
 <!-- EXAMPLE

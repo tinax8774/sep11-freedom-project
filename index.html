@@ -1,28 +1,159 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link href="https://jsdelivr.net" rel="stylesheet" />
         <style>
-            /* CSS */
-            
+
+            /* CSS*/
+            h1 {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+            body {
+                text-align: center;
+                font-family: sans-serif;
+            }
+            .zone { 
+                margin-bottom: 50px; 
+                padding: 20px; 
+                border: 1px solid #ddd; 
+                border-radius: 8px; 
+                display: none; 
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .display-box {
+                margin-top: 15px;
+                min-height: 20px;
+                padding: 10px;
+            }
+            button {
+                padding: 8px 12px;
+            }
+
         </style>
         
-        <title>Title</title>
     </head>
     <body>
         <!-- HTML -->
+        <h1>Book and Movie Suggestions</h1>
+
+        <div id="traits" class="zone">
+            <h2>Traits</h2>
+            <div id="traits-buttons"></div>
+            <div id="traits-display" class="display-box"><i>Select a trait</i></div>
+        </div>
+
+        <div id="emotions" class="zone">
+            <h2>Emotions</h2>
+            <div id="emotions-buttons"></div>
+            <div id="emotions-display" class="display-box"><i>Select an emotion</i></div>
+        </div>
         
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- <script src="script.js"></script> -->
         <script>
-            // JS
+            // js
+            // prompt for the user
+            var choice = prompt("Type 'emotions', 'traits', or 'both':").toLowerCase();   
+
+            // list of traits
+            var traits = [
+                "Sensitive and Creative", 
+                "Adventurous",
+                "Social and Empathetic", 
+                "Organized and Practical", 
+                "Quiet and Observant", 
+                "Optimistic", 
+                "Ambitious and Driven", 
+                "Sentimental"
+            ];
+            // Books suggestions for traits
+            var tBooks = [
+                ["The Ocean at the End of the Lane", "The Night Circus", "On Earth We're Briefly Gorgeous", "Big Magic", "The Creative Cure"],
+                ["Dark Matter", "Into Thin Air", "Project Hail Mary", "The Call of the Wild", "The Alchemist"],
+                ["The House in the Cerulean Sea", "Little Women", "A Man Called Ove", "The Help", "The Rabbit Listened"],
+                ["Atomic Habits", "The Martian", "Getting Things Done", "The Elements of Style", "Outer Order, Inner Calm"],
+                ["Where the Crawdads Sing", "Remains of the Day", "Convenience Store Woman", "Silence", "Quiet"],
+                ["The Hitchhiker's Guide to the Galaxy", "Good Omens", "Red, White and Royal Blue", "Anxious People", "Learned Optimism"],
+                ["The 7 Habits of Highly Effective People", "Steve Jobs", "The Fountainhead", "Shoe Dog", "Good to Great"],
+                ["The Book Thief", "Dandelion Wine", "Never Let Me Go", "The Great Gatsby", "The Notebook"],
+            ];
+            // Movies suggestions based off traits
+            var tMovies = [
+                ["Eternal Sunshine of the Spotless Mind", "Pan's Labyrinth", "The Fall", "Loving Vincent", "Amelie"],
+                ["Mad Max: Fury Road", "The Secret Life of Walter Mitty", "Raiders of the Lost Ark", "North by Northwest", "The Goonies"], 
+                ["The Grand Budapest Hotel", "The Intouchables", "CODA", "About Time", "The King's Speech"],
+                ["Moneyball", "The Big Short", "Apollo 13", "Contagion", "The Imitation Game"], 
+                ["Drive", "Lost in Transition", "Portrait of a Lady on Fire", "Columbus", "Rear Window"],
+                ["Sing Street", "Chef", "Paddington 2", "The Princess Bride", "The Lego Movie"],
+                ["Whiplash", "The Social Network", "The Wolf of Wall Street", "Hidden Figures", "The Prestige"],
+                ["Cinema Paradiso", "Stand by Me", "Midnight in Paris", "Lady Bird", "Up"]
+            ]; 
+
+            // emotions list
+            var emotions = [
+                "Lonely",
+                "Anger", 
+                "Joyful", 
+                "Anxious", 
+                "Heartbroken", 
+                "Bored", 
+                "Overwhelmed", 
+                "Brave"
+            ];
+
+            // Books suggestions for emotions
+            var eBooks = [
+                ["Eleanor Oliphant is Completely Fine", "The Lonely City", "A Man Named Ove", "Night", "The Harry Potter Series"],
+                ["The Girl with the Dragon Tattoo", "Carrie", "Vicious", "Never Get Angry Again"],
+                ["Red, White & Royal Blue", "The House in the Cerulean Sea", "Crazy Rich Asians", "Happy Place", "The 5-Minute Gratitude"],
+                ["The Boy, the Mole, the Fox and the Horse", "Phosphorescence", "Stardust", "Anxious People", "Dare"],
+                ["The Year of Magical Thinking", "Normal People", "The Song of Achilles", "The Wish", "A Little Life"],
+                ["Dark Matter", "The 7 1/2 Deaths of Evelyn Hardcastle", "Project Hail Mary", "The Paradox of Choice", "The Little Prince"],
+                ["Catch-22", "Slaughterhouse-Five", "Hitchhiker's Guide to the Galaxy", "Meditations", "4,000 Weeks"],
+                ["Circe", "Wild", "Power", "The Obstacle is the Way", "Grit"]
+            ];
+            // Movies suggestion for emotions
+            var eMovies = [
+                ["Her", "The Lonely City", "A Man Named Ove","Lost in Translation", "The perks of being a wallflower", "Cast Away", "Moonlight"],
+                ["Promising Young Woman", "Mad Max: Fury Road", "Kill Bill", "John Wick", "The Revenant"],
+                ["Sing Street", "Mamma Mia!", "Ferris Bueller's Day Off", "About Time", "Little Miss Sunshine"],
+                ["My Neighbor Totoro", "Chef", "The Secret Life of Walter Mitty", "Inside Out", "Finding Nemo"],
+                ["External Sunshine of the Spotless Mind", "Past Lives", "Marriage Story", "The Fault in Our Stars", "Me Before You"],
+                ["Inception", "The Prestige", "Bullet Train", "Everything Everywhere All At Once", "The Matrix"],
+                ["The Banshees of Inisheer", "Dr.Strangelove", "Fight Club", "Office Space", "Nomadland"],
+                ["Hidden Figures", "Gladiator", "Wonder Woman", "Braveheart", "12 Years a Slave"]
+            ];
             
+            // Takes in user input
+            var option = function(id, names, books, movies) {
+                if (choice !== id && choice !== "both") return;
+                var zone = document.getElementById(id);
+                var btnContainer = document.getElementById(id + "-buttons");
+                var displayContainer = document.getElementById(id + "-display");
+                
+                zone.style.display = "block";
+                
+                // making of buttons
+                names.forEach(function(name, i) { 
+                    var button = document.createElement("button");
+                    button.innerText = name;
+                    button.style.margin = "5px";
+                    button.onclick = function() {
+                        var pick = (arr) => [...arr].sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 2) + 2).join(", ");
+                        displayContainer.innerHTML = "<h3>" + name + "</h3><p><b>Read:</b> " + pick(books[i]) + "</p><p><b>Watch:</b> " + pick(movies[i]) + "</p>";
+                    };
+
+                    btnContainer.appendChild(button);
+                });
+            };
+
+            option("traits", traits, tBooks, tMovies);
+            option("emotions", emotions, eBooks, eMovies);
             
         </script>
     </body>
