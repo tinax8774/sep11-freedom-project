@@ -4,10 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://jsdelivr.net" rel="stylesheet" />
         <style>
-
-            /* CSS*/
+            /* CSS */
             h1 {
                 text-align: center;
                 margin-top: 20px;
@@ -16,6 +14,7 @@
             body {
                 text-align: center;
                 font-family: sans-serif;
+                background-color: #CEC2FF;
             }
             .zone { 
                 margin-bottom: 50px; 
@@ -31,16 +30,19 @@
                 margin-top: 15px;
                 min-height: 20px;
                 padding: 10px;
+                background: #f9f9f9;
+                border-radius: 4px;
+                text-align: left;
             }
             button {
                 padding: 8px 12px;
+                margin: 5px;
+                cursor: pointer;
             }
-
+            ul { margin: 5px 0; padding-left: 20px; }
         </style>
-        
     </head>
     <body>
-        <!-- HTML -->
         <h1>Book and Movie Suggestions</h1>
 
         <div id="traits" class="zone">
@@ -54,107 +56,257 @@
             <div id="emotions-buttons"></div>
             <div id="emotions-display" class="display-box"><i>Select an emotion</i></div>
         </div>
+
+        <div id="hobbies" class="zone">
+            <h2>Hobbies</h2>
+            <div id="hobbies-buttons"></div>
+            <div id="hobbies-display" class="display-box"><i>Select a hobby</i></div>
+        </div>
+
+        <div id="careers" class="zone">
+            <h2>Careers</h2>
+            <div id="careers-buttons"></div>
+            <div id="careers-display" class="display-box"><i>Select a career</i></div>
+        </div>
         
         <script>
-            // js
-            // prompt for the user
-            var choice = prompt("Type 'emotions', 'traits', or 'both':");   
+            var choice = prompt("Type 'emotions', 'traits', 'hobbies', 'careers', or 'all':").toLowerCase();   
 
-            // list of traits
+            // --- 1. TRAITS ---
             var traits = [
                 "Sensitive and Creative", 
-                "Adventurous",
+                "Adventurous", 
                 "Social and Empathetic", 
                 "Organized and Practical", 
                 "Quiet and Observant", 
                 "Optimistic", 
                 "Ambitious and Driven", 
-                "Sentimental"
+                "Sentimental", 
+                "Rebellious", 
+                "Nurturing", 
+                "Philosophical", 
+                "Analytical"
             ];
-            // Books suggestions for traits
-            var tBooks = [
-                ["The Ocean at the End of the Lane", "The Night Circus", "On Earth We're Briefly Gorgeous", "Big Magic", "The Creative Cure"],
-                ["Dark Matter", "Into Thin Air", "Project Hail Mary", "The Call of the Wild", "The Alchemist"],
-                ["The House in the Cerulean Sea", "Little Women", "A Man Called Ove", "The Help", "The Rabbit Listened"],
-                ["Atomic Habits", "The Martian", "Getting Things Done", "The Elements of Style", "Outer Order, Inner Calm"],
-                ["Where the Crawdads Sing", "Remains of the Day", "Convenience Store Woman", "Silence", "Quiet"],
-                ["The Hitchhiker's Guide to the Galaxy", "Good Omens", "Red, White and Royal Blue", "Anxious People", "Learned Optimism"],
-                ["The 7 Habits of Highly Effective People", "Steve Jobs", "The Fountainhead", "Shoe Dog", "Good to Great"],
-                ["The Book Thief", "Dandelion Wine", "Never Let Me Go", "The Great Gatsby", "The Notebook"],
-            ];
-            // Movies suggestions based off traits
-            var tMovies = [
-                ["Eternal Sunshine of the Spotless Mind", "Pan's Labyrinth", "The Fall", "Loving Vincent", "Amelie"],
-                ["Mad Max: Fury Road", "The Secret Life of Walter Mitty", "Raiders of the Lost Ark", "North by Northwest", "The Goonies"], 
-                ["The Grand Budapest Hotel", "The Intouchables", "CODA", "About Time", "The King's Speech"],
-                ["Moneyball", "The Big Short", "Apollo 13", "Contagion", "The Imitation Game"], 
-                ["Drive", "Lost in Transition", "Portrait of a Lady on Fire", "Columbus", "Rear Window"],
-                ["Sing Street", "Chef", "Paddington 2", "The Princess Bride", "The Lego Movie"],
-                ["Whiplash", "The Social Network", "The Wolf of Wall Street", "Hidden Figures", "The Prestige"],
-                ["Cinema Paradiso", "Stand by Me", "Midnight in Paris", "Lady Bird", "Up"]
-            ]; 
 
-            // emotions list
+            var tBooks = [
+                ["Big Magic", "The Perks of Being a Wallflower", "Radio Silence", "The Goldfinch", "Untamed", "I'll Give You the Sun", "Starfish", "Art Matters", "Sensitive", "All Fours", "The Girls Who Grew Big", "Dear Writer", "Sketch Your Mind", "Water Moon", "The God of Small Things", "Steal Like an Artist", "Daily Rituals", "The Artist's Way", "Creative Confidence", "The Creative Act"],
+                ["Powerless", "Fourth Wing", "Six of Crows", "Into Thin Air", "The Alchemist", "Project Hail Mary", "Scythe", "Born to Run", "Iron Flame", "The Will of the Many", "Touching the Void", "Ghost Soldier", "Endurance", "Hatchet", "Beyond Possible", "The Lost City of Z", "Into the Wild", "Wild", "The Beach", "Life of Pi"],
+                ["How to Know a Person", "Wonder", "Supercommunicators", "If He Had Been with Me", "The Seven Year Slip", "Heartstopper", "My Friends", "Leaders Eat Last", "Humankind", "Group", "Absence", "Between Two Kingdoms", "Crucial Conversations", "Resonant Leadership", "Abundance", "The Art of Gathering", "Just Mercy", "The Power of Vulnerability", "Evicted", "Palaces for the People"],
+                ["Atomic Habits", "Deep Work", "Getting Things Done", "The 7 Habits of Highly Effective Teens", "Slow Productivity", "Tiny Experiments", "Measure What Matters", "Extreme Ownership", "Digital Minimalism", "Free to Focus", "Stop Overthinking", "Effective Executive", "Digital Exhaustion", "Mastery", "Show Your Work!", "The Checklist Manifesto", "Essentialism", "Indistractable", "Standard Deviation", "The Power of Habit"],
+                ["Quiet", "The Secret History", "Normal People", "The God of the Woods", "The Brain at Rest", "Finding Focus", "Walden", "The Shadow of the Wind", "Convenience Store Woman", "Turtles All the Way Down", "The Book Thief", "On Earth We're Briefly Gorgeous", "Circe", "Is a River Alive?", "Shadow Ticket", "Stillness is the Key", "The Little Book of Hygge", "The Year of Magical Thinking", "H is for Hawk", "The Solitary House"],
+                ["The House in the Cerulean Sea", "Factfulness", "The Blue Castle", "You Are a Rock Star", "The Geography of Bliss", "Creating Your Best Life", "Together Together", "Aristotle and Dante", "The Art of Possibility", "Hope in the Dark", "The Boy, the Mole and the Horse", "Abundance", "Everything is Tuberculosis", "The Upside of Stress", "Delivering Happiness", "The Happiness Project", "A Guide to the Good Life", "Better Than Before", "Authentic Happiness", "The Book of Joy"],
+                ["Grit", "Shoe Dog", "Outliers", "Hidden Potential", "Unforgettable Presence", "Mastery", "Elon Musk", "The Ride of a Lifetime", "Extreme Ownership", "The 5 AM Club", "Zero to One", "Make Your Bed", "Never Split the Difference", "Can't Hurt Me", "Who Better Than You?", "Principles", "Steve Jobs", "Thinking in Bets", "Range", "Titan"],
+                ["The Power of Regret", "The Museum of Ordinary People", "Broken Country", "The Favorites", "A Marriage at Sea", "Maggie", "The Rachel Incident", "Good Material", "A Beginner's Guide", "The Ministry of Time", "High Vaultage", "Lessons in Chemistry", "Where'd You Go, Bernadette", "Good Omens", "The Lincoln Highway", "The Dutch House", "An American Marriage", "Commonwealth", "The Sense of an Ending", "This is How It Always Is"],
+                ["Untamed", "Iron Widow", "Red Rising", "The Poppy War", "He Said/She Said", "Chain of Thorns", "Legendborn", "Throne of Glass", "Dread Nation", "The Gilded Ones", "Cemetery Boys", "Moxie", "Iron Flame", "The Ballad of Songbirds and Snakes", "1984", "The Handmaid's Tale", "Fahrenheit 451", "Brave New World", "The Hunger Games", "Uglies"],
+                ["Remarkably Bright Creatures", "Building Better Families", "Braiding Sweetgrass", "The Child in You", "The Love Dare", "How to Win Friends", "Men are from Mars", "Everything is Tuberculosis", "The Orchid and the Dandelion", "My Friends", "Between Two Kingdoms", "A Marriage at Sea", "Abundance", "The Favorites", "The God of Woods", "Parenting from the Inside Out", "The Whole-Brain Child", "Hold On to Your Kids", "Peaceful Parent, Happy Kids", "The Giving Tree"],
+                ["Walden", "Meditations", "Ikigai", "Man's Search for Meaning", "The Power of Now", "The Four Agreements", "The Untethered Soul", "The Book of Ichigo Ichie", "Feel Free", "Demon Voices", "The Examined Life", "Sapiens", "Shadow Ticket", "Absence", "Cleave the Sparrow", "Being Mortal", "The Tao of Pooh", "Zen and the Art of Motorcycle Maintenance", "Sophie's World", "The Prophet"],
+                ["Thinking Fast and Slow", "Blink", "Mindset", "Think Like a Monk", "Atomic Habits", "A History of Ideas", "The Art of Learning", "The Talent Code", "Flow", "The Body Keeps the Score", "Focus on What Matters", "The Laws of Human Nature", "Deep Work", "Essentialism", "Algorithms to Live By", "Nudge", "Poor Charlie's Almanack", "The Signal and the Noise", "Factfulness", "How Not to Be Wrong"]
+            ];
+
+            var tMovies = [
+                ["Spider-Man: Across the Spider-Verse", "Wicked", "The Wild Robot", "Robot Dreams", "I Saw the TV Glow", "Marcel the Shell", "Encanto", "The Fabelmans", "The Mitchells vs. the Machines", "Guillermo del Toro’s Pinocchio", "Nimona", "Snow White", "Perfect Days", "Elemental", "The Shape of Water", "Arrival", "Inside Out", "Coco", "Soul", "The Grand Budapest Hotel"],
+                ["Dune: Part Two", "Jurassic World Rebirth", "Avatar: The Way of Water", "Sonic the Hedgehog 3", "Guardians of the Galaxy Vol. 3", "Songbirds and Snakes", "Uncharted", "Enola Holmes 2", "Twisters", "Moana 2", "Predator: Badlands", "Gran Turismo", "D&D: Honor Among Thieves", "Indiana Jones", "Mission: Impossible", "The Revenant", "Mad Max: Fury Road", "Interstellar", "The Northman", "Top Gun: Maverick"],
+                ["The Hate U Give", "We Live in Time", "Superman", "The Sun Is Also a Star", "Dear Evan Hansen", "Wonder", "Heartstopper", "To All the Boys", "Chang Can Dunk", "The Half of It", "Daughters", "Anora", "Won’t You Be My Neighbor?", "A Real Pain", "Ruby Gillman", "Green Book", "Hidden Figures", "Lion", "The Florida Project", "Short Term 12"],
+                ["Moneyball", "The Martian", "Hidden Figures", "Steve Jobs", "The Social Network", "The Founder", "Gran Turismo", "The Menu", "Glass Onion", "Oppenheimer", "The Thursday Murder Club", "Ford v Ferrari", "The Big Short", "Knives Out", "Apollo 13", "Ocean's Eleven", "Spotlight", "Zodiac", "Sherlock Holmes", "Limitless"],
+                ["Perfect Days", "Aftersun", "The Quiet Girl", "Lady Bird", "The Perks of Being a Wallflower", "Arrival", "Where the Crawdads Sing", "Asteroid City", "The Boy and the Heron", "Lurker", "Night Always Comes", "Coda", "Past Lives", "All of Us Strangers", "A Ghost Story", "Nomadland", "Drive My Car", "The Florida Project", "Minari", "Columbus"],
+                ["Paddington in Peru", "Superman", "Mrs. Harris Goes to Paris", "Thelma", "Moana 2", "Kung Fu Panda 4", "Mario Bros", "Karate Kid Legends", "Sonic 3", "Wonka", "Barbie", "Legally Blonde", "No Way Home", "Sing 2", "Happy Gilmore 2", "Eddie the Eagle", "About Time", "Little Miss Sunshine", "The Secret Life of Walter Mitty", "Up"],
+                ["Gran Turismo", "Oppenheimer", "Top Gun: Maverick", "Elvis", "Air", "The Iron Claw", "F1", "Captain America: Brave New World", "Whiplash", "The Social Network", "Devil Wears Prada", "Black Bag", "Civil War", "Ballerina", "Creed III", "Wolf of Wall Street", "Ford v Ferrari", "Steve Jobs", "Rush", "The Founder"],
+                ["Robot Dreams", "My Old Self", "A Real Pain", "Train Dreams", "The Velveteen Rabbit", "Mrs. Harris Goes to Paris", "Way Way Back", "Paddington in Peru", "Sonic 3", "Minecraft", "Dragon 2025", "Wicked", "The Fabelmans", "Aftersun", "Past Lives", "Brooklyn", "The Farewell", "The Notebook", "La La Land", "About Time"],
+                ["Civil War", "Anora", "Poor Things", "Nimona", "The Batman", "Cruella", "Lady Bird", "The Woman King", "Promising Young Woman", "Everything Everywhere", "Songbirds and Snakes", "Encanto", "Little Women", "Moxie", "V for Vendetta", "Deadpool", "Logan", "Inglourious Basterds", "Knives Out", "Black Widow"],
+                ["The Wild Robot", "Daughters", "Superman", "We Live in Time", "Minecraft", "Velveteen Rabbit", "A Real Pain", "Won’t You Be My Neighbor?", "Paddington", "Coda", "Everything Everywhere", "Minari", "Room", "The Father", "The Quiet Girl", "Brave", "Inside Out", "The Blind Side", "Lion", "Marcel the Shell"],
+                ["Perfect Days", "All of Us Strangers", "The Zone of Interest", "Oppenheimer", "Arrival", "Past Lives", "Everything Everywhere", "Drive My Car", "A Real Pain", "Interstellar", "Tree of Life", "The Whale", "Bardo", "The Phoenician Scheme", "Society of the Snow", "Arrival", "Eternal Sunshine", "Cloud Atlas", "The Fountain", "Blade Runner 2049"],
+                ["Oppenheimer", "Phoenician Scheme", "Mickey 17", "Black Bag", "Theory of Everything", "The Big Short", "Steve Jobs", "Arrival", "Glass Onion", "Tenet", "Enola Holmes 2", "Beautiful Mind", "Moneyball", "Hidden Figures", "Imitation Game", "Zodiac", "Sherlock Holmes", "The Prestige", "The Game", "Prisoners"]
+            ];
+
+            // --- 2. EMOTIONS ---
             var emotions = [
-                "Lonely",
+                "Lonely", 
                 "Anger", 
                 "Joyful", 
                 "Anxious", 
                 "Heartbroken", 
                 "Bored", 
                 "Overwhelmed", 
-                "Brave"
+                "Brave", 
+                "Curious", 
+                "Nostalgic", 
+                "Peaceful", 
+                "Confused"
             ];
 
-            // Books suggestions for emotions
             var eBooks = [
-                ["Eleanor Oliphant is Completely Fine", "The Lonely City", "A Man Named Ove", "Night", "The Harry Potter Series"],
-                ["The Girl with the Dragon Tattoo", "Carrie", "Vicious", "Never Get Angry Again"],
-                ["Red, White & Royal Blue", "The House in the Cerulean Sea", "Crazy Rich Asians", "Happy Place", "The 5-Minute Gratitude"],
-                ["The Boy, the Mole, the Fox and the Horse", "Phosphorescence", "Stardust", "Anxious People", "Dare"],
-                ["The Year of Magical Thinking", "Normal People", "The Song of Achilles", "The Wish", "A Little Life"],
-                ["Dark Matter", "The 7 1/2 Deaths of Evelyn Hardcastle", "Project Hail Mary", "The Paradox of Choice", "The Little Prince"],
-                ["Catch-22", "Slaughterhouse-Five", "Hitchhiker's Guide to the Galaxy", "Meditations", "4,000 Weeks"],
-                ["Circe", "Wild", "Power", "The Obstacle is the Way", "Grit"]
+                ["Remarkably Bright Creatures", "The Midnight Library", "Eleanor Oliphant", "Sorrow and Bliss", "Everyone in This Room", "Addie LaRue", "Normal People", "The House in the Cerulean Sea", "Piranesi", "Circe", "A Man Called Ove", "The Heart's Invisible Furies", "Alone with You", "Notes on a Nervous Planet", "The Lonely City", "Where the Crawdads Sing", "Speak", "The Bell Jar", "Solitaire", "Radio Silence"],
+                ["The Poppy War", "Iron Widow", "Rage Becomes Her", "Chain of Thorns", "Firekeeper’s Daughter", "Concrete Rose", "Female of the Species", "Sadie", "The Power", "Burn Baby Burn", "Ace of Spades", "Yellowface", "None of This is True", "Mexican Gothic", "Evelyn Hugo", "A Court of Silver Flames", "Misery", "Carrie", "Fight Club", "The Outsiders"],
+                ["The House in the Cerulean Sea", "Better Than the Movies", "Aristotle and Dante", "The Art of Possibility", "Big Magic", "Highly Suspicious", "Red, White & Royal Blue", "Book Lovers", "Irregular Witches", "Legends & Lattes", "Humankind", "The Boy, Mole and Horse", "Everything is Tuberculosis", "Good Material", "Geography of Bliss", "Attachments", "One Last Stop", "The Unhoneymooners", "Happy Place", "The Hating Game"],
+                ["Turtles All the Way Down", "The Body Keeps the Score", "Thinking Fast and Slow", "Notes on a Nervous Planet", "First, We Make the Beast Beautiful", "Stop Overthinking", "Digital Minimalism", "Anxious People", "The Silent Patient", "Finding Focus", "Guest List", "None of This is True", "The It Girl", "Dark Matter", "Maybe You Should Talk", "Big Little Lies", "Sharpe Objects", "Gone Girl", "The Woman in the Window", "Verity"],
+                ["They Both Die at the End", "Seven Husbands of Evelyn Hugo", "If He Had Been with Me", "You’ve Reached Sam", "It Ends with Us", "It Starts with Us", "Normal People", "Funny Story", "Beach Read", "Song of Achilles", "Briefly Gorgeous", "Instructions for Dancing", "Midnight Library", "Tomorrow x3", "Love & Other Words", "The Light We Lost", "Me Before You", "One Day", "P.S. I Love You", "Call Me By Your Name"],
+                ["A Beginner’s Guide", "Hitchhiker’s Guide", "Ministry of Time", "Project Hail Mary", "Kill Joy", "Good Omens", "One of Us Is Lying", "Radio Silence", "Rachel Incident", "Bernadette", "Grandest Game", "Six of Crows", "Harauld Hughes", "Finlay Donovan", "Dial A for Aunties", "The Martian", "Artemis", "Ready Player One", "War of the Worlds", "Foundation"],
+                ["Atomic Habits", "Essentialism", "Deep Work", "The 7 Habits", "Slow Productivity", "The Brain at Rest", "Digital Minimalism", "Burnout", "Four Thousand Weeks", "How to Do Nothing", "Feel Good Productivity", "The Power of Now", "10% Happier", "Keep Going", "The Art of Learning", "Getting Things Done", "Indistractable", "The 5 Second Rule", "Make Time", "Daily Rituals"],
+                ["Grit", "Fourth Wing", "Iron Flame", "Scythe", "Courage is Calling", "Songbirds and Snakes", "Firekeeper’s Daughter", "Legendborn", "Throne of Glass", "Gilded Ones", "Dread Nation", "Braiding Sweetgrass", "Make Your Bed", "Can't Hurt Me", "Untamed", "The Book of Five Rings", "Man's Search for Meaning", "Daring Greatly", "I Am Malala", "Long Walk to Freedom"],
+                ["A Brief History of Time", "Anthropocene Reviewed", "Stiff", "The Art of Learning", "Mindset", "A History of Ideas", "Project Hail Mary", "Thinking Fast and Slow", "Ichigo Ichie", "The Alchemist", "An Abundance of Katherines", "What If?", "Disappearing Spoon", "Mastery", "Sapiens", "Cosmos", "Astrophysics for People in a Hurry", "Stuff Matters", "Seven Brief Lessons on Physics", "Educated"],
+                ["Perks Wallflower", "Lincoln Highway", "Great Gatsby", "Book Thief", "My Friends", "Museum Ordinary People", "Looking for Alaska", "To All the Boys", "Telegraph Club", "Once More Feeling", "7 Days in June", "Evelyn Hugo", "Beach Read", "Normal People", "Paper Menagerie", "The Giver", "Little Women", "The Secret Garden", "Anne of Green Gables", "A Wrinkle in Time"],
+                ["Power of Now", "Walden", "Meditations", "4 Agreements", "Braiding Sweetgrass", "Cerulean Sea", "Ikigai", "Art of Stillness", "Finding Focus", "Brain at Rest", "How to Do Nothing", "Untethered Soul", "Comfort with Apples", "Psalm for Wild-Built", "Comfort Book", "The Art of Happiness", "The Little Book of Stoicism", "Goodbye, Things", "The Life-Changing Magic of Tidying Up", "Quiet"],
+                ["Piranesi", "Evelyn Hardcastle", "Ending Things", "Dark Matter", "Silent Patient", "Trust", "Shadow Ticket", "Villains", "Bunny", "Us Is Back", "Guest List", "Maidens", "Rock Paper Scissors", "House of Leaves", "Good Girl's Guide", "And Then There Were None", "The 7 1/2 Deaths of Evelyn Hardcastle", "Recursion", "The Gone-Away World", "Shutter Island"]
             ];
-            // Movies suggestion for emotions
             var eMovies = [
-                ["Her", "The Lonely City", "A Man Named Ove","Lost in Translation", "The perks of being a wallflower", "Cast Away", "Moonlight"],
-                ["Promising Young Woman", "Mad Max: Fury Road", "Kill Bill", "John Wick", "The Revenant"],
-                ["Sing Street", "Mamma Mia!", "Ferris Bueller's Day Off", "About Time", "Little Miss Sunshine"],
-                ["My Neighbor Totoro", "Chef", "The Secret Life of Walter Mitty", "Inside Out", "Finding Nemo"],
-                ["External Sunshine of the Spotless Mind", "Past Lives", "Marriage Story", "The Fault in Our Stars", "Me Before You"],
-                ["Inception", "The Prestige", "Bullet Train", "Everything Everywhere All At Once", "The Matrix"],
-                ["The Banshees of Inisheer", "Dr.Strangelove", "Fight Club", "Office Space", "Nomadland"],
-                ["Hidden Figures", "Gladiator", "Wonder Woman", "Braveheart", "12 Years a Slave"]
+                ["Robot Dreams", "Marcel Shell", "Perfect Days", "Quiet Girl", "Boy and Heron", "Ghost Story", "Crawdads", "Half of It", "Moonlight", "Aftersun", "Past Lives", "Banshees", "Wall-E", "Lost in Translation", "Her", "The Perks of Being a Wallflower", "Eternal Sunshine", "Into the Wild", "Nomadland", "Manchester by the Sea"],
+                ["Hate U Give", "Civil War", "Promising Young Woman", "Batman", "Cruella", "Moxie", "Nimona", "Killers of Flower Moon", "Woman King", "Iron Claw", "Joker", "Everything Everywhere", "Ballerina", "3 Billboards", "Whiplash", "Mad Max: Fury Road", "Django Unchained", "The Revenant", "Inglourious Basterds", "Kill Bill"],
+                ["Paddington", "Mrs. Harris", "Mario Bros", "Moana 2", "Barbie", "Wonka", "Sing 2", "Legally Blonde", "Kung Fu Panda 4", "Mitchells vs Machines", "Thelma", "Spider-Verse", "Encanto", "Matilda", "Lyle Crocodile", "Little Miss Sunshine", "Up", "Elf", "Mean Girls", "Clueless"],
+                ["Inside Out 2", "Oppenheimer", "Tenet", "The Menu", "TV Glow", "Arrival", "Uncut Gems", "Bo Is Afraid", "The Whale", "Glass Onion", "Civil War", "Zone of Interest", "Don't Worry Darling", "Leave the World", "Quiet Place", "Zodiac", "Parasite", "Black Swan", "Gravity", "Birdman"],
+                ["We Live in Time", "All Strangers", "Past Lives", "Fault in Our Stars", "Marriage Story", "Sun Is Also Star", "Aftersun", "Father", "Robot Dreams", "If I Stay", "Always and Forever", "Star Is Born", "Call Me Name", "Bones and All", "5 Feet Apart", "La La Land", "About Time", "Brooklyn", "The Notebook", "Titanic"],
+                ["Naked Gun", "Deadpool & Wolverine", "Glass Onion", "Bottoms", "Bullet Train", "Free Guy", "Everything Everywhere", "Fall Guy", "Freakier Friday", "Bad Guys", "Dungeons & Dragons", "Sonic 3", "Mario Bros", "Mean Girls", "Asteroid City", "Knives Out", "Ferris Bueller", "Napoleon Dynamite", "Superbad", "The Breakfast Club"],
+                ["Everything Everywhere", "Inside Out 2", "Spider-Verse", "Turning Red", "Whiplash", "Oppenheimer", "Tenet", "Social Network", "Encanto", "Steve Jobs", "Big Short", "Moneyball", "Martian", "Top Gun: Maverick", "Black Bag", "Ford v Ferrari", "Wolf of Wall Street", "Rush", "The Founder", "Limitless"],
+                ["Wild Robot", "Dune 2", "Songbirds Snakes", "Superman", "Captain America 2025", "Woman King", "Moana 2", "Top Gun: Maverick", "Hidden Figures", "Society of Snow", "13 Lives", "Iron Claw", "Avatar 2", "Nimona", "Puss in Boots", "Braveheart", "Gladiator", "Mulan", "Spider-Man: No Way Home", "Avengers: Endgame"],
+                ["Martian", "Arrival", "Interstellar", "Glass Onion", "Enola Holmes 2", "Spider-Verse", "Imitation Game", "Hidden Figures", "Apollo 13", "Inside Out 2", "Moneyball", "Creator", "D&D", "Poor Things", "Asteroid City", "Ex Machina", "Moon", "Contact", "The Prestige", "Gravity"],
+                ["Fabelmans", "Old Self", "Robot Dreams", "Mario Bros", "Paddington", "No Way Home", "Barbie", "Way Way Back", "Lady Bird", "Coda", "Aftersun", "Minari", "Wicked", "Real Pain", "Top Gun: Maverick", "Back to the Future", "Toy Story", "Hook", "Jurassic Park", "Home Alone"],
+                ["Perfect Days", "Boy Heron", "My Neighbor Totoro", "Secret World Arrietty", "Ghost Story", "Quiet Girl", "Nomadland", "Soul", "Petite Maman", "Columbus", "Drive My Car", "Paterson", "Minari", "Shape of Water", "If We Were Villains", "Spring, Summer, Fall, Winter", "Baraka", "Samsara", "Microcosmos", "Encounters at the End of the World"],
+                ["Tenet", "Everything Everywhere", "TV Glow", "Inception", "Glass Onion", "Asteroid City", "Mickey 17", "Menu", "Bardo", "Arrival", "Truman Show", "Spider-Verse", "Matrix", "Donnie Darko", "Eternal Sunshine", "Mulholland Drive", "Coherence", "Memento", "Interstellar", "Enemy"]
+            ];
+
+            // --- 3. HOBBIES ---
+            var hobbies = [
+                "Arts and Crafts", 
+                "Sports", 
+                "Gaming", 
+                "Reading", 
+                "Nature", 
+                "Music", 
+                "Science", 
+                "Cooking", 
+                "Volunteering", 
+                "Travel", 
+                "Logic", 
+                "History", 
+                "Wellness", 
+                "Fashion"
+            ];
+
+            var hBooks = [
+                ["Big Magic", "Goldfinch", "Give You Sun", "Sketch Your Mind", "Art Matters", "Bury Bones", "Museum Ordinary People", "Starfish", "Show Work!", "Art Fielding", "Write a Novel", "Drawing Right Side", "Steal Like Artist", "Creative Act", "Keep Going", "Daily Rituals", "The Artist's Way", "The Creative Habit", "Art and Fear", "The Gift"],
+                ["Grit", "Shoe Dog", "Born Run", "Check & Mate", "Luck Happens", "Crossover", "Mamba Mentality", "Solo Leveling", "Endure", "Can't Hurt Me", "Amateurs", "Gameboard Gods", "Fence", "Dragon Hoops", "Boys on Boat", "Moneyball", "Open", "Friday Night Lights", "Barbarian Days", "Into Thin Air"],
+                ["Project Hail Mary", "Tomorrow x3", "Ready Player Two", "Warcross", "Slay", "Elon Musk", "Digital Minimalism", "Innovators", "Blood Pixels", "Masters Doom", "Agency", "Snow Crash", "Neuromancer", "User Friendly", "Life 3.0", "Console Wars", "Significant Figures", "Hackers", "Superintelligence", "The Soul of a New Machine"],
+                ["Perks Wallflower", "Book Thief", "Radio Silence", "Funny Story", "Better Than Movies", "On Writing", "Bird by Bird", "Shadow Wind", "Library Babel", "Cloud Cuckoo Land", "Dear Writer", "Dictionary Words", "Verity", "Inkheart", "Book Lovers", "Ex Libris", "Reading Like a Writer", "The Library Book", "How Reading Changed My Life", "The End of Your Life Book Club"],
+                ["Braiding Sweetgrass", "Into Thin Air", "River Alive?", "God Woods", "Walden", "Wilder Girls", "Hunger Games", "Vaster Wilds", "Underland", "Overstory", "H is for Hawk", "Salt Path", "Desert Solitaire", "Living Mountain", "American Wolf", "Nature's Best Hope", "The Hidden Life of Trees", "Pilgrim at Tinker Creek", "Silent Spring", "Encounters with the Archdruid"],
+                ["Daisy Jones & Six", "Evelyn Hugo", "Opal & Nev", "High Fidelity", "Bel Canto", "Goon Squad", "Musicophilia", "How Music Works", "Rest Is Noise", "Groupies", "Ensemble", "Utopia Avenue", "Just Kids", "Frankie Presto", "What It Sounds Like", "The Dirt", "Empire of Cotton", "Year of the Monkey", "The Soloist", "Chronicles Vol. 1"],
+                ["Brief History", "Stiff", "Disappearing Spoon", "What If?", "Good Girl's Guide", "Silent Patient", "Thinking Fast Slow", "Sapiens", "Gene", "Astrophysics Hurry", "Lab Girl", "Dark Matter", "Evelyn Hardcastle", "Lessons Chemistry", "Immense World", "Spillover", "Cosmos", "Stuff Matters", "Thinking in Bets", "Seven Brief Lessons"],
+                ["Luck Happens", "Lessons Chemistry", "Sharper Knife", "Blood Bones", "Crying in H Mart", "Kitchen Confidential", "Fire on High", "Sourdough", "Garden Spells", "Dreaming Books", "Wizard’s Guide", "Heartburn", "Sweetbitter", "Taste", "Coconut Cake", "Heat", "Salt Fat Acid Heat", "The Omnivore's Dilemma", "Food Rules", "Setting the Table"],
+                ["How Know Person", "Humankind", "Supercommunicators", "5 Dysfunctions", "Leaders Eat Last", "Between 2 Kingdoms", "Evicted", "Mountains Beyond", "Tattoos on Heart", "I Am Malala", "Promise Pencil", "Abundance", "Invisible Child", "Palaces People", "Power Moments", "The Art of Gathering", "Dead Aid", "Doing Good Better", "Give and Take", "Think Again"],
+                ["Alchemist", "Black Ghosts", "Slow Trains", "Time of Gifts", "Lost Borders", "Geography Bliss", "Shantaram", "Wild", "Vagabonding", "Sunburned Country", "Walk in Woods", "Machu Picchu", "Neither Here", "Four Seasons Rome", "Railway Bazaar", "Blue Highways", "Travels with Charley", "In a Sunburned Country", "The Great Railway Bazaar", "Paris to the Moon"],
+                ["Thinking Fast Slow", "Art Learning", "Mindset", "Atomic Habits", "Laws Human Nature", "Talent Code", "Predictably Rational", "Algorithms Live By", "Fooled Randomness", "Black Swan", "Superintelligence", "Signal Noise", "Factfulness", "Deep Work", "Peak", "Thinking in Bets", "The Art of Strategy", "Superforecasting", "Thinking Architecture", "Logical Labyrinths"],
+                ["History Ideas", "Circe", "Song Achilles", "Mythos", "Norse Mythology", "Book Thief", "Caste", "Warmth Other Suns", "Salt", "Silk Roads", "Guns Germs Steel", "Homegoing", "Poisonwood Bible", "Pillars Earth", "Pachinko", "Wolf Hall", "A People's History", "The Guns of August", "Team of Rivals", "1776"],
+                ["Power of Now", "Walden", "Meditations", "4 Agreements", "Ikigai", "Power Habit", "Quiet", "Body Keeps Score", "Comfort Book", "Finding Focus", "10% Happier", "Talk to Someone", "Untethered Soul", "Atomic Habits", "Tiny Experiments", "Breath", "The Sleep Revolution", "Why We Sleep", "Man's Search for Meaning", "Radical Acceptance"],
+                ["Evelyn Hugo", "Devil Prada", "Gods Kings", "D.V.", "Beautiful Fall", "Glass Fashion", "Dress Code", "Champagne Supernovas", "Chiffon Trenches", "Overdressed", "Fashionopolis", "Why Fashion Matters", "Little Dictionary", "Women in Clothes", "Battle Versailles", "Advanced Style", "The Little Dictionary of Fashion", "Grace: A Memoir", "Love Style Life", "Dior by Dior"]
             ];
             
-            // Takes in user input
-            var option = function(id, names, books, movies) {
-                if (choice !== id && choice !== "both") return;
-                var zone = document.getElementById(id);
-                var btnContainer = document.getElementById(id + "-buttons");
-                var displayContainer = document.getElementById(id + "-display");
-                
-                zone.style.display = "block";
-                
-                // making of buttons
-                names.forEach(function(name, i) { 
-                    var button = document.createElement("button");
-                    button.innerText = name;
-                    button.style.margin = "5px";
-                    button.onclick = function() {
-                        var pick = (arr) => [...arr].sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 2) + 2).join(", ");
-                        displayContainer.innerHTML = "<h3>" + name + "</h3><p><b>Read:</b> " + pick(books[i]) + "</p><p><b>Watch:</b> " + pick(movies[i]) + "</p>";
+            var hMovies = [
+                ["Spider-Verse", "Fabelmans", "Marcel Shell", "Wicked", "Pinocchio", "Mitchells", "Loving Vincent", "Soul", "Asteroid City", "Lego Movie", "Nimona", "Kiki", "Big Eyes", "French Dispatch", "Snow White", "Pollock", "Big Eyes", "Exit Through the Gift Shop", "Exit Through the Gift Shop", "Velvet Buzzsaw"],
+                ["Gran Turismo", "F1", "Iron Claw", "Creed III", "Top Gun", "Air", "Hustle", "Moneyball", "Ford v Ferrari", "Eddie Eagle", "King Richard", "Chang Can Dunk", "Boys on Boat", "Nyad", "Swimmers", "Rocky", "Rudy", "I, Tonya", "The Blind Side", "Remember the Titans"],
+                ["Mario Bros", "Minecraft", "Mickey 17", "Free Guy", "Sonic 3", "Ready Player One", "Social Network", "Steve Jobs", "Tetris", "Blackberry", "Creator", "Dungeons & Dragons", "Wreck-It Ralph", "Tron", "WarGames", "The Last Starfighter", "Jumanji", "Gamer", "eXistenZ", "Pixels"],
+                ["All Strangers", "Lady Bird", "Perks Wallflower", "Little Women", "Kill Darlings", "Dead Poets Society", "Book Thief", "Freedom Writers", "End Tour", "Colette", "Genius", "Finding Forrester", "Ghost Writer", "Tolkien", "Christmas Carol", "Bright Star", "The Reader", "In the Name of the Father", "Misery", "Atonement"],
+                ["Wild Robot", "Dune 2", "Jurassic World", "Avatar 2", "Twisters", "Moana 2", "Crawdads", "Into Wild", "Arrietty", "Society Snow", "13 Lives", "Wild", "Call of Wild", "Revenant", "Princess Mononoke", "A River Runs Through It", "Never Cry Wolf", "Grizzly Man", "March of the Penguins", "Encounters at the End of the World"],
+                ["Wicked", "Elvis", "Wonka", "Sing 2", "Matilda", "Whiplash", "Tick Tick Boom", "Bohemian Rhapsody", "Encanto", "Lyle Crocodile", "School of Rock", "Greatest Showman", "Pitch Perfect", "Heights", "West Side Story", "La La Land", "Amadeus", "Almost Famous", "8 Mile", "The Jazz Singer"],
+                ["Oppenheimer", "Arrival", "Martian", "Interstellar", "Hidden Figures", "Glass Onion", "Enola Holmes 2", "Imitation Game", "Knives Out", "Haunting Venice", "Tenet", "Radioactive", "Gravity", "Theory Everything", "Cosmos", "Apollo 13", "The Prestige", "The Fountain", "Cloud Atlas", "Contact"],
+                ["Mrs. Harris", "Menu", "Ratatouille", "Chef", "Julie & Julia", "Hundred-Foot Journey", "Boiling Point", "Delicious", "The Bear", "Chocolat", "Waitress", "Spirited Away", "Always Be Maybe", "Big Night", "Founder", "Eat Pray Love", "Babette's Feast", "The Ramen Girl", "Simply Irresistible", "Burnt"],
+                ["Hate U Give", "Daughters", "Superman", "Neighbor?", "Coda", "Wonder", "Blind Side", "Just Mercy", "Schindler's List", "Pursuit Happyness", "Pay Forward", "Heads of State", "Nickel Boys", "Simón", "Dune 2", "Milk", "Patch Adams", "Green Book", "The Soloist", "Pay It Forward"],
+                ["Paddington", "Past Lives", "Walter Mitty", "Real Pain", "Emily Criminal", "Ticket Paradise", "Nomadland", "Lost Translation", "Wilderpeople", "Lion", "Farewell", "Grand Budapest", "Babel"],
+                ["Paddington in Peru", "Past Lives", "Walter Mitty", "Real Pain", "Emily the Criminal", "Ticket Paradise", "Nomadland", "Lost Translation", "Wilderpeople", "Lion", "Farewell", "Grand Budapest", "Babel", "Under the Tuscan Sun", "Eurovision", "Darjeeling Limited", "Midnight in Paris", "Before Sunrise", "The Beach", "Seven Years in Tibet"],
+                ["Moneyball", "Big Short", "Inception", "Game", "Searching", "Ex Machina", "Ocean's 11", "Sherlock Holmes", "Mission Final", "Prestige", "Source Code", "Arrival", "Minority Report", "Prisoners", "Now You See Me", "The Imitation Game", "A Beautiful Mind", "The Menu", "Knives Out", "Glass Onion"],
+                ["Oppenheimer", "Napoleon", "Killers of the Flower Moon", "Woman King", "Fabelmans", "Minari", "Wicked", "Belfast", "1917", "Dunkirk", "Northman", "Green Knight", "Wolfwalkers", "Eagle Huntress", "Hidden Figures", "Schindler's List", "Lincoln", "The King", "Gladiator", "Braveheart"],
+                ["Perfect Days", "Quiet Girl", "Petite Maman", "Columbus", "Paterson", "Drive My Car", "Inside Out 2", "Everywhere", "Arrival", "Whale", "Father", "Aftersun", "Minari", "Soul", "About Time", "Spring Summer Fall Winter", "Samsara", "Baraka", "Microcosmos", "Tree of Life"],
+                ["Mrs. Harris", "Devil Prada", "Cruella", "Barbie", "Substance", "Phantom Thread", "Neon Demon", "House Gucci", "Coco Chanel", "Shopaholic", "Zoolander", "September Issue", "Personal Shopper", "YSL", "Funny Face", "The Dressmaker", "Confessions of a Shopaholic", "High Heels", "Clueless", "Gia"]
+            ];
+
+            // --- 4. CAREERS ---
+            var careers = [
+                "Medicine", 
+                "Law", 
+                "Engineering", 
+                "Arts", 
+                "Teaching", 
+                "Business", 
+                "Psychology", 
+                "Technology", 
+                "Journalism", 
+                "Environment", 
+                "Culinary", 
+                "Sports Management", 
+                "Social Work", 
+                "Politics", 
+                "Space"
+            ];
+
+            var cBooks = [
+                ["Being Mortal", "When Breath Becomes Air", "Complications", "The Emperor of All Maladies", "Better", "Internal Medicine", "This Is Going to Hurt"],
+                ["Just Mercy", "The New Jim Crow", "To Kill a Mockingbird", "The Bramble Bush", "The Buffalo Creek Disaster", "Gideon's Trumpet", "The Runaway Jury"],
+                ["The Design of Everyday Things", "Structures", "The Existential Pleasures of Engineering", "Skunk Works", "Elon Musk", "Rocket Men", "Foundation"],
+                ["The Artist's Way", "Big Magic", "War of Art", "Steal Like an Artist", "Daily Rituals", "Art & Fear", "Creativity Inc"],
+                ["Educated", "The Water is Wide", "Teach Like a Champion", "Thirty Million Words", "Small Victories", "Creative Schools", "Real Talk for Real Teachers"],
+                ["Shoe Dog", "Zero to One", "The Lean Startup", "Good to Great", "Steve Jobs", "Principles", "Thrive"],
+                ["The Body Keeps the Score", "Thinking Fast and Slow", "Quiet", "Man's Search for Meaning", "The Man Who Mistook His Wife for a Hat", "Flow", "Blink"],
+                ["The Soul of a New Machine", "Hackers", "Innovators", "The Phoenix Project", "Life 3.0", "Zero Day", "Algorithms to Live By"],
+                ["All the President's Men", "The New New Thing", "The Kingdom and the Power", "Personal History", "Killers of the Flower Moon", "In Cold Blood", "Catch and Kill"],
+                ["Silent Spring", "The Sixth Extinction", "The Overstory", "Braiding Sweetgrass", "Drawdown", "The Uninhabitable Earth", "Eating Animals"],
+                ["Kitchen Confidential", "Setting the Table", "The Omnivore's Dilemma", "Heat", "Blood Bones & Butter", "Dirt", "Yes Chef"],
+                ["Moneyball", "Friday Night Lights", "The Blind Side", "Mamba Mentality", "Shoe Dog", "The Soul of a Team", "Eleven Rings"],
+                ["The Boy Who Was Raised as a Dog", "Evicted", "Daring Greatly", "Invisible Child", "Mountains Beyond Mountains", "Scarcity", "Tattoos on the Heart"],
+                ["Team of Rivals", "The Audacity of Hope", "The Prince", "Game Change", "Personal History", "Profiles in Courage", "The Hill We Climb"],
+                ["The Right Stuff", "Hidden Figures", "Packing for Mars", "Cosmos", "The Martian", "Contact", "Pale Blue Dot"]
+            ];
+
+            var cMovies = [
+                ["Oppenheimer", "The Theory of Everything", "Awakenings", "Contagion", "The Good Doctor", "Temple Grandin", "Patch Adams"],
+                ["Just Mercy", "Dark Waters", "The Trial of the Chicago 7", "Spotlight", "Marshall", "A Few Good Men", "Erin Brockovich"],
+                ["The Martian", "Hidden Figures", "Steve Jobs", "Apollo 13", "Ford v Ferrari", "Bridge of Spies", "Iron Man"],
+                ["Wicked", "The Fabelmans", "Whiplash", "La La Land", "Black Swan", "Loving Vincent", "The French Dispatch"],
+                ["Dead Poets Society", "Stand and Deliver", "The Holdovers", "Freedom Writers", "Lean on Me", "School of Rock", "Good Will Hunting"],
+                ["The Social Network", "The Big Short", "Moneyball", "The Founder", "Jerry Maguire", "Air", "Wall Street"],
+                ["Inside Out 2", "A Beautiful Mind", "Good Will Hunting", "The Whale", "Black Swan", "The Joker", "The Experiment"],
+                ["The Social Network", "Steve Jobs", "Blackberry", "The Imitation Game", "Ex Machina", "WarGames", "The Matrix"],
+                ["Spotlight", "All the President's Men", "The Post", "Civil War", "Nightcrawler", "She Said", "Zodiac"],
+                ["The Wild Robot", "Dark Waters", "An Inconvenient Truth", "Avatar", "Interstellar", "Princess Mononoke", "Twisters"],
+                ["The Bear", "Chef", "Ratatouille", "The Menu", "Boiling Point", "Julie & Julia", "Hundred-Foot Journey"],
+                ["Moneyball", "Jerry Maguire", "Air", "Draft Day", "Gran Turismo", "Hustle", "Ford v Ferrari"],
+                ["Daughters", "Short Term 12", "Coda", "Minari", "The Blind Side", "Lion", "Precious"],
+                ["The Ides of March", "Lincoln", "Milk", "All the King's Men", "Selma", "Vice", "The Post"],
+                ["Apollo 13", "The Martian", "Interstellar", "Hidden Figures", "Contact", "First Man", "Gravity"]
+            ];
+
+            function setupSection(sectionId, list, bookArr, movieArr) {
+                var zone = document.getElementById(sectionId);
+                var btnContainer = document.getElementById(sectionId + "-buttons");
+                var display = document.getElementById(sectionId + "-display");
+
+                if (zone) zone.style.display = "block";
+
+                list.forEach(function(name, index) {
+                    var btn = document.createElement("button");
+                    btn.innerText = name;
+                    btn.onclick = function() {
+                        var currentBooks = bookArr[index] || ["No suggestions"];
+                        var currentMovies = movieArr[index] || ["No suggestions"];
+
+                        var html = "<strong>" + name + " Suggestions:</strong><br><br>";
+                        html += "<b>Books:</b><ul>";
+                        currentBooks.forEach(function(b) { html += "<li>" + b + "</li>"; });
+                        html += "</ul><b>Movies:</b><ul>";
+                        currentMovies.forEach(function(m) { html += "<li>" + m + "</li>"; });
+                        html += "</ul>";
+                        
+                        display.innerHTML = html;
                     };
-
-                    btnContainer.appendChild(button);
+                    btnContainer.appendChild(btn);
                 });
-            };
+            }
 
-            option("traits", traits, tBooks, tMovies);
-            option("emotions", emotions, eBooks, eMovies);
-            
+            if (choice === "traits" || choice === "all") setupSection("traits", traits, tBooks, tMovies);
+            if (choice === "emotions" || choice === "all") setupSection("emotions", emotions, eBooks, eMovies);
+            if (choice === "hobbies" || choice === "all") setupSection("hobbies", hobbies, hBooks, hMovies);
+            if (choice === "careers" || choice === "all") setupSection("careers", careers, cBooks, cMovies);
+            if (choice === "both") {
+                setupSection("traits", traits, tBooks, tMovies);
+                setupSection("emotions", emotions, eBooks, eMovies);
+            }
         </script>
     </body>
 </html>
+
