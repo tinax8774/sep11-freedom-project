@@ -19,7 +19,7 @@
             .zone { 
                 margin-bottom: 50px; 
                 padding: 20px; 
-                border: 1px solid #ddd; 
+                border: 4px dotted #B118C8; 
                 border-radius: 8px; 
                 display: none; 
                 max-width: 800px;
@@ -271,41 +271,39 @@
                 ["Apollo 13", "The Martian", "Interstellar", "Hidden Figures", "Contact", "First Man", "Gravity"]
             ];
 
-            function setupSection(sectionId, list, bookArr, movieArr) {
-                var zone = document.getElementById(sectionId);
-                var btnContainer = document.getElementById(sectionId + "-buttons");
-                var display = document.getElementById(sectionId + "-display");
+            function setupSection(category, names, books, movies) {
+                if (choice === category || choice === 'all') {
+                    document.getElementById(category).style.display = 'block';
+                    var btnContainer = document.getElementById(category + '-buttons');
+                    var display = document.getElementById(category + '-display');
 
-                if (zone) zone.style.display = "block";
+                    names.forEach(function(name, index) {
+                        var btn = document.createElement('button');
+                        btn.innerHTML = name;
+                        btn.onclick = function() {
+                            // Shuffle and slice logic without $
+                            var shuffledBooks = books[index].slice().sort(function() { return 0.5 - Math.random(); });
+                            var fiveBooks = shuffledBooks.slice(0, 5);
+                            
+                            var shuffledMovies = movies[index].slice().sort(function() { return 0.5 - Math.random(); });
+                            var fiveMovies = shuffledMovies.slice(0, 5);
+                            var output = "<h3>5 Book Recommendations</h3><ul>";
+                            fiveBooks.forEach(function(b) { output += "<li>" + b + "</li>"; });
+                            output += "</ul><h3>5 Movie Recommendations</h3><ul>";
+                            fiveMovies.forEach(function(m) { output += "<li>" + m + "</li>"; });
+                            output += "</ul>";
 
-                list.forEach(function(name, index) {
-                    var btn = document.createElement("button");
-                    btn.innerText = name;
-                    btn.onclick = function() {
-                        var currentBooks = bookArr[index] || ["No suggestions"];
-                        var currentMovies = movieArr[index] || ["No suggestions"];
-
-                        var html = "<strong>" + name + " Suggestions:</strong><br><br>";
-                        html += "<b>Books:</b><ul>";
-                        currentBooks.forEach(function(b) { html += "<li>" + b + "</li>"; });
-                        html += "</ul><b>Movies:</b><ul>";
-                        currentMovies.forEach(function(m) { html += "<li>" + m + "</li>"; });
-                        html += "</ul>";
-                        
-                        display.innerHTML = html;
-                    };
-                    btnContainer.appendChild(btn);
-                });
+                            display.innerHTML = output;
+                        };
+                        btnContainer.appendChild(btn);
+                    });
+                }
             }
 
-            if (choice === "traits" || choice === "all") setupSection("traits", traits, tBooks, tMovies);
-            if (choice === "emotions" || choice === "all") setupSection("emotions", emotions, eBooks, eMovies);
-            if (choice === "hobbies" || choice === "all") setupSection("hobbies", hobbies, hBooks, hMovies);
-            if (choice === "careers" || choice === "all") setupSection("careers", careers, cBooks, cMovies);
-            if (choice === "both") {
-                setupSection("traits", traits, tBooks, tMovies);
-                setupSection("emotions", emotions, eBooks, eMovies);
-            }
+            setupSection('traits', traits, tBooks, tMovies);
+            setupSection('emotions', emotions, eBooks, eMovies);
+            setupSection('hobbies', hobbies, hBooks, hMovies);
+            setupSection('careers', careers, cBooks, cMovies);
         </script>
     </body>
 </html>
