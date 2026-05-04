@@ -281,7 +281,6 @@
                         var btn = document.createElement('button');
                         btn.innerHTML = name;
                         btn.onclick = function() {
-                            // Shuffle and slice logic without $
                             var shuffledBooks = books[index].slice().sort(function() { return 0.5 - Math.random(); });
                             var fiveBooks = shuffledBooks.slice(0, 5);
                             
