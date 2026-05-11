@@ -1,16 +1,19 @@
 # Presentation Plan
 
 ## Hook
-* 
+* Have you ever wondered about if you could have a list of books or movies based off your interests, emotions traits or hobbies?
 
 ## Product
-* 
+* Show a demo of like how to answer the prompts and how each of the buttons gives a certain amount of books and movie suggestions
 
 ## Process
-* 
+* Show mostly the code that does not include the 8 arrays
+* Include maybe one array
+* Show the difference between my MVP and beyond MVP
 
 ## Conclusion
-* 
+* Providing a link to my actual project
+* Include some takeaways I had from making my project
 
 <!-- EXAMPLE
 
